@@ -74,8 +74,10 @@ class _WebMenuItemState extends State<WebMenuItem> {
         }
       },
       child: ListTile(
+        focusColor: Colors.white60,
+        hoverColor: Colors.white60,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-        tileColor: widget.isActive ? Colors.grey[200] : Colors.white,
+        tileColor: widget.isActive ? Colors.grey[300] : Colors.transparent,
         leading: Icon(
           widget.icon,
         ),

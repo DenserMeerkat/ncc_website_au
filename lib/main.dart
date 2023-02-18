@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'NCC | Anna University',
         theme: ThemeData(
+          useMaterial3: true,
           primarySwatch: Colors.red,
         ),
         themeMode: ThemeMode.light,

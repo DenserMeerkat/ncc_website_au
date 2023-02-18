@@ -1,12 +1,10 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
-
 import 'package:ncc_website/components/mydrawer.dart';
-import 'package:ncc_website/resources.dart/carousel.dart';
+import 'package:ncc_website/responsive/desktop/home_desktop.dart';
 
-import '../components/common.dart';
+import '../components/events_page.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({super.key});
@@ -32,7 +30,8 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   final List<Widget> tabs = [
     const DesktopHomePage(),
     Container(color: Colors.blue),
-    Container(color: Colors.green),
+    const EventPage(),
+    Container(color: Colors.orange),
     Container(color: Colors.yellow),
     //AboutPage(),
     //EventsPage(),
@@ -68,120 +67,6 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                 children: tabs,
               ),
             ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class DesktopHomePage extends StatefulWidget {
-  const DesktopHomePage({super.key});
-
-  @override
-  State<DesktopHomePage> createState() => _DesktopHomePageState();
-}
-
-class _DesktopHomePageState extends State<DesktopHomePage> {
-  bool currentState = true;
-  final items = Carousel.carouselImages;
-
-  @override
-  Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return SingleChildScrollView(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 20,
-          ),
-          const Motto(),
-          const SizedBox(
-            height: 10,
-          ),
-          const TitleText(
-            title: "What's New",
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            child: MouseRegion(
-              onEnter: (event) => setState(() {
-                currentState = !currentState;
-              }),
-              onExit: (event) => setState(() {
-                currentState = !currentState;
-              }),
-              child: CarouselSlider(
-                items: items,
-                disableGesture: true,
-                options: CarouselOptions(
-                  height: size.width * 0.26,
-                  aspectRatio: 16 / 10,
-                  viewportFraction: 1,
-                  initialPage: 0,
-                  enableInfiniteScroll: true,
-                  reverse: false,
-                  autoPlay: currentState,
-                  enlargeStrategy: CenterPageEnlargeStrategy.height,
-                  autoPlayInterval: const Duration(seconds: 3),
-                  autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                  autoPlayCurve: Curves.fastOutSlowIn,
-                  enlargeCenterPage: false,
-                  enlargeFactor: 0.3,
-                  scrollDirection: Axis.horizontal,
-                ),
-              ),
-            ),
-          ),
-          NccInfo(size: size),
-          const SizedBox(
-            height: 10,
-          ),
-          Wrap(
-            spacing: 10,
-            runSpacing: 15,
-            alignment: WrapAlignment.center,
-            runAlignment: WrapAlignment.start,
-            children: [
-              Container(
-                constraints: const BoxConstraints(minWidth: 500, maxWidth: 500),
-                child: Column(
-                  children: const [
-                    TitleText(
-                      title: "Core Values of NCC",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    CoreNCC(),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
-                ),
-              ),
-              Container(
-                constraints: const BoxConstraints(minWidth: 480, maxWidth: 480),
-                child: Column(
-                  children: const [
-                    TitleText(
-                      title: "Aim of NCC",
-                    ),
-                    SizedBox(
-                      height: 15,
-                    ),
-                    AimNCC(),
-                    SizedBox(
-                      height: 15,
-                    ),
-                  ],
-                ),
-              ),
-            ],
           ),
         ],
       ),

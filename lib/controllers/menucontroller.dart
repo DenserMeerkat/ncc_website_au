@@ -11,19 +11,22 @@ class MenuController1 extends GetxController {
         "Home",
         "About ",
         "Events",
-        "Contact",
+        "Alumni",
+        //"Contact",
       ];
   List<IconData> get menuIcons => [
         Icons.home_outlined,
         Icons.info_outline_rounded,
         Icons.tour_outlined,
-        Icons.call_outlined,
+        Icons.school_outlined,
+        //Icons.mail_outlined,
       ];
   List<IconData> get menuIconsFilled => [
         Icons.home,
         Icons.info,
         Icons.tour_rounded,
-        Icons.call,
+        Icons.school_rounded,
+        //Icons.mail,
       ];
   GlobalKey<ScaffoldState> get scaffoldkey => _scaffoldKey;
 

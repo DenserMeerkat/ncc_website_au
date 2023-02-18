@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ncc_website/constants.dart';
 
 class TitleText extends StatelessWidget {
   final String title;
@@ -32,16 +33,22 @@ class TitleText extends StatelessWidget {
   }
 }
 
-class Motto extends StatelessWidget {
-  const Motto({
+class PageTitle extends StatelessWidget {
+  final String title;
+  const PageTitle({
     super.key,
+    required this.title,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width * 0.5,
-      constraints: const BoxConstraints(minWidth: 250, maxWidth: 300),
+      constraints: const BoxConstraints(
+        minWidth: 100,
+        maxWidth: 300,
+        minHeight: 30,
+        maxHeight: 50,
+      ),
       padding: const EdgeInsets.symmetric(
         vertical: 8,
         horizontal: 16,
@@ -53,32 +60,21 @@ class Motto extends StatelessWidget {
             BoxShadow(
               offset: const Offset(1, 1),
               color: Colors.grey[500]!,
-              blurRadius: 5,
+              blurRadius: 3,
             ),
           ]),
-      child: const FittedBox(
-        child: Text(
-          " \"Unity And Discipline\" ",
-          style: TextStyle(
-            fontSize: 25,
-            color: Colors.black87,
-            letterSpacing: 1,
-            fontWeight: FontWeight.w900,
-          ),
+      child: Text(
+        title,
+        style: const TextStyle(
+          fontSize: 22,
+          color: Colors.black87,
+          letterSpacing: 1,
+          fontWeight: FontWeight.w900,
         ),
       ),
     );
   }
 }
-
-var boxDecoration = BoxDecoration(
-  color: Colors.white,
-  borderRadius: BorderRadius.circular(5),
-  boxShadow: [
-    BoxShadow(
-        color: Colors.grey[400]!, offset: const Offset(1, 1), blurRadius: 5),
-  ],
-);
 
 class NccInfo extends StatelessWidget {
   const NccInfo({
@@ -159,9 +155,9 @@ class NccInfo extends StatelessWidget {
                       margin: const EdgeInsets.all(8),
                       padding: const EdgeInsets.all(8),
                       decoration: boxDecoration,
-                      child: Row(
+                      child: const Row(
                         crossAxisAlignment: CrossAxisAlignment.center,
-                        children: const [
+                        children: [
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
@@ -198,7 +194,7 @@ class NccInfo extends StatelessWidget {
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Text(
-                                  "NCC Flag Contains NCC Crest in gold in the middle, with the letters \"NCC\" encircled by a wreath of seventeen lotus with a background in Red, Blue and Light blue.Red depicts the Army, Deep Blue depicts the Navy and Light Blue depicts the Air Force. The seventeen lotuses represent the 17 State Directorates. \"Unity of Discipline\" (Ekta aur Anushasan) is written at the bottom of the NCC Flag."),
+                                  "NCC Flag Contains NCC Crest in gold in the middle, with the letters \"NCC\" encircled by a wreath of seventeen lotus with a background in Red, Blue and Light blue.Red depicts the Army, Deep Blue depicts the Navy and Light Blue depicts the Air Force. The seventeen lotuses represent the 17 State Directorates. \"Unity and Discipline\" (Ekta aur Anushasan) is written at the bottom of the NCC Flag."),
                             ),
                           ),
                           SizedBox(

@@ -37,6 +37,8 @@ dependencies:
   get: ^4.6.5
   carousel_slider: ^4.2.1
   change_app_package_name: ^1.1.0
+  material_design_icons_flutter: ^6.0.7096
+  expandable_text: ^2.3.0
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +76,10 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
+  fonts:
+    - family: MyFlutterApp
+      fonts:
+        - asset: assets/icons/MyFLutterApp.ttf
   #   - family: Schyler
   #     fonts:
   #       - asset: fonts/Schyler-Regular.ttf

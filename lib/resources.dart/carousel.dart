@@ -34,10 +34,12 @@ class Carousel {
 class CarouselImage extends StatelessWidget {
   final String image;
   final String text;
+  final double fsize;
   const CarouselImage({
     super.key,
     required this.image,
     required this.text,
+    this.fsize = 15.0,
   });
 
   @override
@@ -45,23 +47,25 @@ class CarouselImage extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
-          clipBehavior: Clip.antiAlias,
-          margin: EdgeInsets.symmetric(
-              horizontal: MediaQuery.of(context).size.width * 0.01),
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(10)),
-            boxShadow: [
-              BoxShadow(
-                offset: Offset(2, 2),
-                color: Colors.grey,
-                blurRadius: 5,
-              ),
-            ],
-          ),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
+        Expanded(
+          child: Container(
+            clipBehavior: Clip.antiAlias,
+            margin: EdgeInsets.symmetric(
+                horizontal: MediaQuery.of(context).size.width * 0.01),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+              boxShadow: [
+                BoxShadow(
+                  offset: Offset(2, 2),
+                  color: Colors.grey,
+                  blurRadius: 5,
+                ),
+              ],
+            ),
+            child: Image.asset(
+              image,
+              fit: BoxFit.cover,
+            ),
           ),
         ),
         const SizedBox(height: 8),

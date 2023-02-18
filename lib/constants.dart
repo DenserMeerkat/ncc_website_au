@@ -21,8 +21,18 @@ class MyAppbar extends StatelessWidget {
   }
 }
 
+var boxDecoration = BoxDecoration(
+  color: Colors.white,
+  borderRadius: BorderRadius.circular(10),
+  boxShadow: [
+    BoxShadow(
+        color: Colors.grey[400]!, offset: const Offset(1, 1), blurRadius: 5),
+  ],
+);
 var myAppBar = AppBar(
   backgroundColor: Colors.grey[100],
+  surfaceTintColor: Colors.grey[100],
+  shadowColor: Colors.grey,
   title: Row(
     mainAxisSize: MainAxisSize.min,
     children: [
