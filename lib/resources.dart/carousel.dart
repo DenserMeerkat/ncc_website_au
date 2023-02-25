@@ -84,9 +84,9 @@ class CarouselImage extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
-                    fontSize: Responsivelayout.checkPlatform(context) == 1
+                    fontSize: ResponsiveLayout.checkPlatform(context) == 1
                         ? 15
-                        : Responsivelayout.checkPlatform(context) == 2
+                        : ResponsiveLayout.checkPlatform(context) == 2
                             ? 14
                             : 11,
                     fontWeight: FontWeight.w600,

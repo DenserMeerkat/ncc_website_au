@@ -49,7 +49,7 @@ class MyDrawer extends StatelessWidget {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 SizedBox(
-                                  width: 40,
+                                  width: 38,
                                   child:
                                       Image.asset("assets/images/ncc_logo.png"),
                                 ),
@@ -60,22 +60,25 @@ class MyDrawer extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   mainAxisAlignment: MainAxisAlignment.end,
                                   children: [
-                                    Text(
-                                      "National Cadet Corps",
-                                      style: TextStyle(
-                                        //color: Colors.white,
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.w800,
+                                    FittedBox(
+                                      child: SelectableText(
+                                        "National Cadet Corps",
+                                        style: TextStyle(
+                                          //color: Colors.white,
+                                          fontSize: 17,
+                                          fontWeight: FontWeight.w800,
+                                        ),
                                       ),
                                     ),
                                     SizedBox(
                                       height: 5,
                                     ),
-                                    Text(
+                                    SelectableText(
                                       "Anna University",
                                       style: TextStyle(
                                         //color: Colors.white70,
                                         fontSize: 15,
+                                        fontWeight: FontWeight.w600,
                                         letterSpacing: 1,
                                       ),
                                     ),

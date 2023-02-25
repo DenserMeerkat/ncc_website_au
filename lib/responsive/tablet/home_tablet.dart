@@ -45,8 +45,7 @@ class _TabletHomePageState extends State<TabletHomePage> {
             child: CarouselSlider(
               items: items,
               options: CarouselOptions(
-                height: size.width * 0.385 < 320 ? size.width * 0.385 : 320,
-                aspectRatio: 16 / 9,
+                aspectRatio: 16 / 5,
                 viewportFraction: .95,
                 initialPage: 0,
                 enableInfiniteScroll: true,

@@ -1,19 +1,18 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:ncc_website/components/common.dart';
 import 'package:ncc_website/components/footer.dart';
 import 'package:ncc_website/resources.dart/carousel.dart';
 import 'package:ncc_website/responsive/responsive_layout.dart';
 
-class DesktopHomePage extends StatefulWidget {
-  const DesktopHomePage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<DesktopHomePage> createState() => _DesktopHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _DesktopHomePageState extends State<DesktopHomePage> {
+class _HomePageState extends State<HomePage> {
   bool currentState = true;
   final items = Carousel.carouselImages;
 

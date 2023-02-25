@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/common.dart';
 import 'package:ncc_website/resources.dart/carousel.dart';
-import 'package:ncc_website/resources.dart/events.dart';
+import 'package:ncc_website/resources.dart/events/events.dart';
 import 'footer.dart';
 
 class EventPage extends StatefulWidget {
@@ -26,7 +26,8 @@ class _EventPageState extends State<EventPage> {
         children: [
           const SizedBox(height: 20),
           const PageTitle(
-            title: " \"Unity And Discipline\" ",
+            icon: Icons.tour,
+            title: " \tEvents\t ",
           ),
           const SizedBox(
             height: 30,

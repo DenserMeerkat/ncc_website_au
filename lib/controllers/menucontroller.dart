@@ -11,6 +11,7 @@ class MenuController1 extends GetxController {
         "Home",
         "About ",
         "Events",
+        "Gallery",
         "Alumni",
         //"Contact",
       ];
@@ -18,6 +19,7 @@ class MenuController1 extends GetxController {
         Icons.home_outlined,
         Icons.info_outline_rounded,
         Icons.tour_outlined,
+        Icons.photo_library_outlined,
         Icons.school_outlined,
         //Icons.mail_outlined,
       ];
@@ -25,6 +27,7 @@ class MenuController1 extends GetxController {
         Icons.home,
         Icons.info,
         Icons.tour_rounded,
+        Icons.photo_library_rounded,
         Icons.school_rounded,
         //Icons.mail,
       ];

@@ -23,7 +23,7 @@ class WebMenu extends StatelessWidget {
             press: () {
               _controller.setMenuIndex(index);
               MenuChanged(index).dispatch(context);
-              if (Responsivelayout.checkPlatform(context) > 1) {
+              if (ResponsiveLayout.checkPlatform(context) > 1) {
                 Navigator.of(context).pop();
               }
             },
@@ -56,7 +56,7 @@ class WebMenuItem extends StatefulWidget {
   final VoidCallback press;
 
   @override
-  _WebMenuItemState createState() => _WebMenuItemState();
+  State<WebMenuItem> createState() => _WebMenuItemState();
 }
 
 class _WebMenuItemState extends State<WebMenuItem> {

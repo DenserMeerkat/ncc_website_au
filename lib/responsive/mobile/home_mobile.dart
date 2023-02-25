@@ -53,8 +53,7 @@ class _MobileHomePageState extends State<MobileHomePage> {
             child: CarouselSlider(
               items: items,
               options: CarouselOptions(
-                height: 190,
-                aspectRatio: 16 / 9,
+                aspectRatio: 16 / 6,
                 viewportFraction: 1,
                 initialPage: 0,
                 enableInfiniteScroll: true,

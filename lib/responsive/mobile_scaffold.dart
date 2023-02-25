@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/events_page.dart';
 import 'package:ncc_website/components/footer.dart';
+import 'package:ncc_website/components/gallery_page.dart';
 import 'package:ncc_website/components/mydrawer.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
+import 'package:ncc_website/responsive/desktop/home_desktop.dart';
 import 'package:ncc_website/responsive/mobile/home_mobile.dart';
 
 class MobileScaffold extends StatefulWidget {
@@ -28,10 +30,10 @@ class _MobileScaffoldState extends State<MobileScaffold> {
   }
 
   final List<Widget> tabs = [
-    const MobileHomePage(),
+    const DesktopHomePage(),
     Container(color: Colors.blue),
     const EventPage(),
-    Container(color: Colors.orange),
+    const GalleryPage(),
     Container(color: Colors.yellow),
     //AboutPage(),
     //EventsPage(),

@@ -22,7 +22,7 @@ class MyAppbar extends StatelessWidget {
 }
 
 var boxDecoration = BoxDecoration(
-  color: Colors.white,
+  color: Colors.white.withOpacity(0.8),
   borderRadius: BorderRadius.circular(10),
   boxShadow: [
     BoxShadow(
@@ -32,7 +32,8 @@ var boxDecoration = BoxDecoration(
 var myAppBar = AppBar(
   backgroundColor: Colors.grey[100],
   surfaceTintColor: Colors.grey[100],
-  shadowColor: Colors.grey,
+  shadowColor: Colors.black,
+  elevation: 4,
   title: Row(
     mainAxisSize: MainAxisSize.min,
     children: [
@@ -43,7 +44,7 @@ var myAppBar = AppBar(
       const SizedBox(
         width: 15,
       ),
-      const Text(
+      const SelectableText(
         "NCC | Anna University",
         style: TextStyle(
           fontSize: 16,
@@ -71,3 +72,10 @@ var myAppBar = AppBar(
     },
   ),
 );
+
+extension StringExtension on String {
+  /// Truncate a string if it's longer than [maxLength] and add an [ellipsis].
+  String truncate(int maxLength, [String ellipsis = "…"]) => length > maxLength
+      ? '${substring(0, maxLength - ellipsis.length)}$ellipsis'
+      : this;
+}

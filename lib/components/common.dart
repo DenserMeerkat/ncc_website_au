@@ -16,10 +16,13 @@ class TitleText extends StatelessWidget {
         Container(
           height: 10,
           width: 10,
-          color: Colors.black54,
+          decoration: BoxDecoration(
+            color: Colors.black87,
+            borderRadius: BorderRadius.circular(2),
+          ),
         ),
         const SizedBox(width: 10),
-        Text(
+        SelectableText(
           title,
           style: Theme.of(context).textTheme.headlineLarge?.copyWith(
                 color: Colors.black,
@@ -35,9 +38,11 @@ class TitleText extends StatelessWidget {
 
 class PageTitle extends StatelessWidget {
   final String title;
+  final IconData? icon;
   const PageTitle({
     super.key,
     required this.title,
+    this.icon,
   });
 
   @override
@@ -45,7 +50,7 @@ class PageTitle extends StatelessWidget {
     return Container(
       constraints: const BoxConstraints(
         minWidth: 100,
-        maxWidth: 300,
+        maxWidth: 350,
         minHeight: 30,
         maxHeight: 50,
       ),
@@ -63,14 +68,21 @@ class PageTitle extends StatelessWidget {
               blurRadius: 3,
             ),
           ]),
-      child: Text(
-        title,
-        style: const TextStyle(
-          fontSize: 22,
-          color: Colors.black87,
-          letterSpacing: 1,
-          fontWeight: FontWeight.w900,
-        ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          icon != null ? const SizedBox(width: 10) : const SizedBox(width: 0),
+          icon != null ? Icon(icon) : const SizedBox(width: 0),
+          SelectableText(
+            title,
+            style: const TextStyle(
+              fontSize: 22,
+              color: Colors.black87,
+              letterSpacing: 1,
+              fontWeight: FontWeight.w800,
+            ),
+          ),
+        ],
       ),
     );
   }
@@ -122,7 +134,7 @@ class NccInfo extends StatelessWidget {
                           const Expanded(
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Text(
+                              child: SelectableText(
                                   "The National Cadet Corps in India is a voluntary organization which recruits cadets from high schools, colleges and Universities all over India. The Cadets are given basic military training in small arms and parades."),
                             ),
                           ),
@@ -161,7 +173,7 @@ class NccInfo extends StatelessWidget {
                           Expanded(
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Text(
+                              child: SelectableText(
                                   "We the cadet of the national cadet corps, do solemnly pledge that we shall always uphold the unity of india.We resolve to be disciplined and responsible citizen of our nation.We shall undertake positive community service in the spirit of selflessness and concern for our fellow beings"),
                             ),
                           ),
@@ -193,7 +205,7 @@ class NccInfo extends StatelessWidget {
                           const Expanded(
                             child: Padding(
                               padding: EdgeInsets.all(8.0),
-                              child: Text(
+                              child: SelectableText(
                                   "NCC Flag Contains NCC Crest in gold in the middle, with the letters \"NCC\" encircled by a wreath of seventeen lotus with a background in Red, Blue and Light blue.Red depicts the Army, Deep Blue depicts the Navy and Light Blue depicts the Air Force. The seventeen lotuses represent the 17 State Directorates. \"Unity and Discipline\" (Ekta aur Anushasan) is written at the bottom of the NCC Flag."),
                             ),
                           ),
@@ -371,7 +383,7 @@ class CustomListTile extends StatelessWidget {
         ),
         const SizedBox(width: 30),
         Expanded(
-          child: Text(
+          child: SelectableText(
             text,
             style: textStyle,
           ),

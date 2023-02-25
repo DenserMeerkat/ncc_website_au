@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:ncc_website/components/gallery_page.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
 import 'package:ncc_website/components/mydrawer.dart';
 import 'package:ncc_website/responsive/desktop/home_desktop.dart';
+import 'package:ncc_website/responsive/responsive_layout.dart';
 
 import '../components/events_page.dart';
 
@@ -31,7 +33,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
     const DesktopHomePage(),
     Container(color: Colors.blue),
     const EventPage(),
-    Container(color: Colors.orange),
+    const GalleryPage(),
     Container(color: Colors.yellow),
     //AboutPage(),
     //EventsPage(),
@@ -41,22 +43,27 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    int device = ResponsiveLayout.checkPlatform(context);
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
       body: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          NotificationListener(
-            child: NotificationListener<MenuChanged>(
-              child: MyDrawer(size: size),
-              onNotification: (n) {
-                setState(() {
-                  pageController.jumpToPage(n.index);
-                });
-                return true;
-              },
-            ),
-          ),
+          device == 1
+              ? NotificationListener(
+                  child: NotificationListener<MenuChanged>(
+                    child: MyDrawer(size: size),
+                    onNotification: (n) {
+                      setState(() {
+                        pageController.jumpToPage(n.index);
+                      });
+                      return true;
+                    },
+                  ),
+                )
+              : const SizedBox(
+                  width: 0,
+                ),
           const SizedBox(width: 5),
           Expanded(
             child: Scaffold(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
-
-import 'package:flutter/services.dart';
 import 'package:ncc_website/icons.dart';
 import 'package:ncc_website/responsive/responsive_layout.dart';
 
@@ -11,7 +9,7 @@ class Footer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    final bool isDesktop = Responsivelayout.checkPlatform(context) == 1;
+    final bool isDesktop = ResponsiveLayout.checkPlatform(context) == 1;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -112,9 +110,7 @@ class _SocialBoxState extends State<SocialBox> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           constraints: const BoxConstraints(
-            minHeight: 10,
             maxHeight: 50,
-            minWidth: 20,
             maxWidth: 120,
           ),
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
