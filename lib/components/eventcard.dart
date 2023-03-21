@@ -45,43 +45,40 @@ class EventCard extends StatelessWidget {
             height: 10,
             width: double.infinity,
           ),
-          SizedBox(
-            width: double.infinity,
-            child: Wrap(
-              crossAxisAlignment: WrapCrossAlignment.center,
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                const Icon(Icons.flag_circle),
-                SelectableText(
-                  title,
-                  style: Theme.of(context).textTheme.headlineSmall!.copyWith(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
-                ),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    Tooltip(
-                      message: date,
+          Wrap(
+            crossAxisAlignment: WrapCrossAlignment.center,
+            spacing: 10,
+            runSpacing: 10,
+            children: [
+              const Icon(Icons.flag_circle),
+              SelectableText(
+                title,
+                style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                    ),
+              ),
+              const SizedBox(height: 30),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Tooltip(
+                    message: date,
+                    child: Transform(
+                      transform: Matrix4.identity()..scale(0.85),
                       child: Chip(
-                        backgroundColor: Colors.red[50],
-                        side: const BorderSide(color: Colors.black45, width: 1),
+                        backgroundColor: Colors.teal[400],
+                        shadowColor: Colors.black,
+                        side: const BorderSide(color: Colors.teal, width: 2),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                         avatar: Container(
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black87, width: 1),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
+                          padding: const EdgeInsets.all(2),
                           child: const FittedBox(
                             child: Icon(
                               Icons.calendar_month,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -91,55 +88,52 @@ class EventCard extends StatelessWidget {
                               Theme.of(context).textTheme.titleSmall!.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.white,
                                   ),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 20,
-                    ),
-                    Tooltip(
-                      message: location,
+                  ),
+                  Tooltip(
+                    message: location,
+                    child: Transform(
+                      transform: Matrix4.identity()..scale(0.85),
                       child: Chip(
-                        backgroundColor: Colors.green[50],
-                        side: const BorderSide(color: Colors.black45, width: 1),
+                        backgroundColor: Colors.lightGreen[400],
+                        shadowColor: Colors.black,
+                        side: const BorderSide(
+                            color: Colors.lightGreen, width: 2),
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(50)),
                         avatar: Container(
-                          padding: const EdgeInsets.all(3),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(color: Colors.black87, width: 1),
-                            borderRadius: BorderRadius.circular(50),
-                          ),
+                          padding: const EdgeInsets.all(2),
                           child: const FittedBox(
                             child: Icon(
                               Icons.location_on_outlined,
-                              color: Colors.black,
+                              color: Colors.white,
                             ),
                           ),
                         ),
                         label: SelectableText(
                           location.truncate(
-                            isMobile ? 300 ~/ 18 : 500 ~/ 18,
+                            isMobile ? 300 ~/ 12 : 500 ~/ 18,
                           ),
-                          style:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleSmall!
+                              .copyWith(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.white),
                         ),
                       ),
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
           const SizedBox(
-            height: 15,
+            height: 10,
           ),
           Container(
             //width: double.infinity,
@@ -187,7 +181,7 @@ class EventCard extends StatelessWidget {
               const Spacer(),
               FilledButton.icon(
                 onPressed: () {},
-                label: const SelectableText("View"),
+                label: const Text("View"),
                 icon: const Icon(
                   Icons.open_in_new,
                   size: 15,
@@ -196,7 +190,7 @@ class EventCard extends StatelessWidget {
               const SizedBox(width: 10),
               FilledButton.icon(
                 onPressed: () {},
-                label: const SelectableText("Report"),
+                label: const Text("Report"),
                 icon: const Icon(
                   Icons.download,
                   size: 15,

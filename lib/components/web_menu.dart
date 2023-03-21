@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:ncc_website/constants.dart';
-import 'package:ncc_website/responsive/responsive_layout.dart';
+import 'package:go_router/go_router.dart';
 import '../../controllers/menucontroller.dart';
 
 class WebMenu extends StatelessWidget {
@@ -10,6 +9,16 @@ class WebMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final router = GoRouter.of(context).location.toString();
+    Map<int, String> routeIndex = {
+      0: '/',
+      1: '/about',
+      2: '/events',
+      3: '/gallery',
+      4: '/alumni',
+    };
+    _controller.setMenuIndex(
+        routeIndex.keys.firstWhere((element) => routeIndex[element] == router));
     return Obx(
       () => Column(
         children: List.generate(
@@ -19,12 +28,20 @@ class WebMenu extends StatelessWidget {
                 ? _controller.menuIconsFilled[index]
                 : _controller.menuIcons[index],
             text: _controller.menuItems[index],
-            isActive: index == _controller.selectedIndex,
+            isActive: routeIndex[index] == router,
             press: () {
               _controller.setMenuIndex(index);
-              MenuChanged(index).dispatch(context);
-              if (ResponsiveLayout.checkPlatform(context) > 1) {
-                Navigator.of(context).pop();
+              switch (index) {
+                case 0:
+                  return context.go('/');
+                case 1:
+                  return context.go('/about');
+                case 2:
+                  return context.go('/events');
+                case 3:
+                  return context.go('/gallery');
+                case 4:
+                  return context.go('/alumni');
               }
             },
           ),

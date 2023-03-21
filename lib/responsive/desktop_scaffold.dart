@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ncc_website/components/about_page.dart';
 import 'package:ncc_website/components/gallery_page.dart';
+import 'package:ncc_website/components/home_page.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
 import 'package:ncc_website/components/mydrawer.dart';
-import 'package:ncc_website/responsive/desktop/home_desktop.dart';
 import 'package:ncc_website/responsive/responsive_layout.dart';
 
 import '../components/events_page.dart';
 
 class DesktopScaffold extends StatefulWidget {
-  const DesktopScaffold({super.key});
+  final int pageIndex;
+  const DesktopScaffold({super.key, required this.pageIndex});
 
   @override
   State<DesktopScaffold> createState() => _DesktopScaffoldState();
@@ -30,14 +32,12 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   }
 
   final List<Widget> tabs = [
-    const DesktopHomePage(),
-    Container(color: Colors.blue),
+    const HomePage(),
+    const AboutPage(),
     const EventPage(),
     const GalleryPage(),
     Container(color: Colors.yellow),
     //AboutPage(),
-    //EventsPage(),
-    //ContactPage(),
   ];
 
   @override
@@ -68,11 +68,12 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
           Expanded(
             child: Scaffold(
               backgroundColor: defaultBackgroundColor,
-              body: PageView(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: pageController,
-                children: tabs,
-              ),
+              body: tabs[widget.pageIndex],
+              // PageView(
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   controller: pageController,
+              //   children: tabs,
+              // ),
             ),
           ),
         ],

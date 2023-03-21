@@ -4,10 +4,72 @@ import 'package:ncc_website/responsive/desktop_scaffold.dart';
 import 'package:ncc_website/responsive/mobile_scaffold.dart';
 import 'package:ncc_website/responsive/responsive_layout.dart';
 import 'package:ncc_website/responsive/tablet_scaffold.dart';
+import 'package:url_strategy/url_strategy.dart';
+import 'package:go_router/go_router.dart';
 
 void main() async {
+  setPathUrlStrategy();
   runApp(const MyApp());
 }
+
+final GoRouter _router = GoRouter(
+  routes: <RouteBase>[
+    GoRoute(
+      path: '/',
+      builder: (BuildContext context, GoRouterState state) {
+        return const Material(
+          child: ResponsiveLayout(
+            mobileScaffold: MobileScaffold(pageIndex: 0),
+            tabletScaffold: TabletScaffold(pageIndex: 0),
+            desktopScaffold: DesktopScaffold(pageIndex: 0),
+          ),
+        );
+      },
+      routes: <RouteBase>[
+        GoRoute(
+          path: 'about',
+          builder: (context, state) => const Material(
+            child: ResponsiveLayout(
+              mobileScaffold: MobileScaffold(pageIndex: 1),
+              tabletScaffold: TabletScaffold(pageIndex: 1),
+              desktopScaffold: DesktopScaffold(pageIndex: 1),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: 'events',
+          builder: (context, state) => const Material(
+            child: ResponsiveLayout(
+              mobileScaffold: MobileScaffold(pageIndex: 2),
+              tabletScaffold: TabletScaffold(pageIndex: 2),
+              desktopScaffold: DesktopScaffold(pageIndex: 2),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: 'gallery',
+          builder: (context, state) => const Material(
+            child: ResponsiveLayout(
+              mobileScaffold: MobileScaffold(pageIndex: 3),
+              tabletScaffold: TabletScaffold(pageIndex: 3),
+              desktopScaffold: DesktopScaffold(pageIndex: 3),
+            ),
+          ),
+        ),
+        GoRoute(
+          path: 'alumni',
+          builder: (context, state) => const Material(
+            child: ResponsiveLayout(
+              mobileScaffold: MobileScaffold(pageIndex: 4),
+              tabletScaffold: TabletScaffold(pageIndex: 4),
+              desktopScaffold: DesktopScaffold(pageIndex: 4),
+            ),
+          ),
+        ),
+      ],
+    ),
+  ],
+);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -17,21 +79,18 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: GetMaterialApp(
-          debugShowCheckedModeBanner: false,
-          title: 'NCC | Anna University',
-          theme: ThemeData(
-            useMaterial3: true,
-            primarySwatch: Colors.red,
-          ),
-          themeMode: ThemeMode.light,
-          home: const SafeArea(
-            child: ResponsiveLayout(
-              mobileScaffold: MobileScaffold(),
-              tabletScaffold: TabletScaffold(),
-              desktopScaffold: DesktopScaffold(),
-            ),
-          )),
+      child: GetMaterialApp.router(
+        debugShowCheckedModeBanner: false,
+        title: 'NCC | Anna University',
+        theme: ThemeData(
+          useMaterial3: true,
+          primarySwatch: Colors.red,
+        ),
+        themeMode: ThemeMode.light,
+        routeInformationProvider: _router.routeInformationProvider,
+        routeInformationParser: _router.routeInformationParser,
+        routerDelegate: _router.routerDelegate,
+      ),
     );
   }
 }

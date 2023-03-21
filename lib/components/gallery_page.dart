@@ -1,5 +1,6 @@
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:ncc_website/components/common.dart';
 import 'package:ncc_website/constants.dart';
 import 'package:ncc_website/resources.dart/carousel.dart';
@@ -157,7 +158,9 @@ class GalLinkCard extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
                 Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
+                    GalDate(date: date),
                     const Spacer(),
                     FilledButton.icon(
                       onPressed: () {
@@ -205,38 +208,22 @@ class GalCardTop extends StatelessWidget {
           size: 20,
         ),
         const SizedBox(width: 10),
-        SelectableText(
-          title.truncate(size.width ~/ 33),
-          maxLines: 1,
-          style: const TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            overflow: TextOverflow.ellipsis,
+        Tooltip(
+          message: title,
+          child: SelectableText(
+            title.truncate(
+                size.width < 600 ? size.width ~/ 15 : size.width ~/ 30),
+            maxLines: 1,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 18,
+              fontWeight: FontWeight.w600,
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
         ),
         const SizedBox(width: 20),
-        Chip(
-          backgroundColor: Colors.red[50],
-          side: const BorderSide(color: Colors.black45, width: 1),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          avatar: Container(
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(color: Colors.black87, width: 1),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            child: const FittedBox(
-              child: Icon(
-                Icons.calendar_month,
-                color: Colors.black,
-              ),
-            ),
-          ),
-          label: SelectableText(date),
-        ),
+        size.width < 600 ? const SizedBox(width: 0) : GalDate(date: date),
         const Spacer(),
         size.width < 600
             ? const SizedBox(width: 0)
@@ -251,6 +238,48 @@ class GalCardTop extends StatelessWidget {
                 ),
               ),
       ],
+    );
+  }
+}
+
+class GalDate extends StatelessWidget {
+  const GalDate({
+    super.key,
+    required this.date,
+  });
+
+  final String date;
+
+  @override
+  Widget build(BuildContext context) {
+    return Tooltip(
+      message: date,
+      child: Transform(
+        transform: Matrix4.identity()..scale(0.85),
+        child: Chip(
+          backgroundColor: Colors.teal[400],
+          shadowColor: Colors.black,
+          side: const BorderSide(color: Colors.teal, width: 1),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+          avatar: Container(
+            padding: const EdgeInsets.all(2),
+            child: const FittedBox(
+              child: Icon(
+                Icons.calendar_month,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          label: SelectableText(
+            date,
+            style: Theme.of(context)
+                .textTheme
+                .titleSmall!
+                .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+          ),
+        ),
+      ),
     );
   }
 }

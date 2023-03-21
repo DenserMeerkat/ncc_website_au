@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ncc_website/components/about_page.dart';
 import 'package:ncc_website/components/events_page.dart';
 import 'package:ncc_website/components/footer.dart';
 import 'package:ncc_website/components/gallery_page.dart';
+import 'package:ncc_website/components/home_page.dart';
 import 'package:ncc_website/components/mydrawer.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
@@ -9,7 +11,8 @@ import 'package:ncc_website/responsive/desktop/home_desktop.dart';
 import 'package:ncc_website/responsive/mobile/home_mobile.dart';
 
 class MobileScaffold extends StatefulWidget {
-  const MobileScaffold({super.key});
+  final int pageIndex;
+  const MobileScaffold({super.key, required this.pageIndex});
 
   @override
   State<MobileScaffold> createState() => _MobileScaffoldState();
@@ -30,14 +33,12 @@ class _MobileScaffoldState extends State<MobileScaffold> {
   }
 
   final List<Widget> tabs = [
-    const DesktopHomePage(),
-    Container(color: Colors.blue),
+    const HomePage(),
+    const AboutPage(),
     const EventPage(),
     const GalleryPage(),
     Container(color: Colors.yellow),
     //AboutPage(),
-    //EventsPage(),
-    //ContactPage(),
   ];
 
   @override
@@ -57,11 +58,12 @@ class _MobileScaffoldState extends State<MobileScaffold> {
           },
         ),
       ),
-      body: PageView(
-        physics: const NeverScrollableScrollPhysics(),
-        controller: pageController,
-        children: tabs,
-      ),
+      body: tabs[widget.pageIndex],
+      // PageView(
+      //   physics: const NeverScrollableScrollPhysics(),
+      //   controller: pageController,
+      //   children: tabs,
+      // ),
     );
   }
 }

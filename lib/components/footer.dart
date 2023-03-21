@@ -32,7 +32,7 @@ class Footer extends StatelessWidget {
             padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 48),
             child: Wrap(
               alignment: WrapAlignment.center,
-              spacing: 20,
+              spacing: 25,
               runSpacing: 10,
               children: [
                 SocialBox(
@@ -94,6 +94,7 @@ class _SocialBoxState extends State<SocialBox> {
 
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return InkWell(
       onTap: () => html.window.open(widget.link, "_blank"),
       child: MouseRegion(
@@ -110,13 +111,14 @@ class _SocialBoxState extends State<SocialBox> {
         child: AnimatedContainer(
           duration: const Duration(milliseconds: 200),
           constraints: const BoxConstraints(
+            minHeight: 30,
             maxHeight: 50,
             maxWidth: 120,
           ),
-          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+          padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
           decoration: BoxDecoration(
-            color: isHover ? widget.hoverColor : Colors.grey[300],
-            borderRadius: BorderRadius.circular(5),
+            color: isHover ? widget.hoverColor : Colors.grey[50],
+            borderRadius: BorderRadius.circular(50),
             boxShadow: isHover
                 ? [
                     const BoxShadow(
@@ -141,14 +143,16 @@ class _SocialBoxState extends State<SocialBox> {
                 color: !isHover ? Colors.black87 : Colors.white,
                 size: widget.size,
               ),
-              const SizedBox(width: 8),
-              Text(
-                widget.appName,
-                style: TextStyle(
-                  color: !isHover ? Colors.black : Colors.white,
-                ),
-              ),
-              const SizedBox(width: 4),
+              width < 600 ? const SizedBox(width: 0) : const SizedBox(width: 8),
+              width < 600
+                  ? const SizedBox(width: 0)
+                  : Text(
+                      widget.appName,
+                      style: TextStyle(
+                        color: !isHover ? Colors.black : Colors.white,
+                      ),
+                    ),
+              width < 600 ? const SizedBox(width: 0) : const SizedBox(width: 4),
             ],
           ),
         ),
