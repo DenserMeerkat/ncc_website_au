@@ -16,54 +16,77 @@ final GoRouter _router = GoRouter(
   routes: <RouteBase>[
     GoRoute(
       path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const Material(
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const Material(
           child: ResponsiveLayout(
             mobileScaffold: MobileScaffold(pageIndex: 0),
             tabletScaffold: TabletScaffold(pageIndex: 0),
             desktopScaffold: DesktopScaffold(pageIndex: 0),
           ),
-        );
-      },
+        ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
+      ),
     ),
     GoRoute(
       path: '/about',
-      builder: (context, state) => const Material(
-        child: ResponsiveLayout(
-          mobileScaffold: MobileScaffold(pageIndex: 1),
-          tabletScaffold: TabletScaffold(pageIndex: 1),
-          desktopScaffold: DesktopScaffold(pageIndex: 1),
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const Material(
+          child: ResponsiveLayout(
+            mobileScaffold: MobileScaffold(pageIndex: 1),
+            tabletScaffold: TabletScaffold(pageIndex: 1),
+            desktopScaffold: DesktopScaffold(pageIndex: 1),
+          ),
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
       ),
     ),
     GoRoute(
       path: '/events',
-      builder: (context, state) => const Material(
-        child: ResponsiveLayout(
-          mobileScaffold: MobileScaffold(pageIndex: 2),
-          tabletScaffold: TabletScaffold(pageIndex: 2),
-          desktopScaffold: DesktopScaffold(pageIndex: 2),
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const Material(
+          child: ResponsiveLayout(
+            mobileScaffold: MobileScaffold(pageIndex: 2),
+            tabletScaffold: TabletScaffold(pageIndex: 2),
+            desktopScaffold: DesktopScaffold(pageIndex: 2),
+          ),
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
       ),
     ),
     GoRoute(
       path: '/gallery',
-      builder: (context, state) => const Material(
-        child: ResponsiveLayout(
-          mobileScaffold: MobileScaffold(pageIndex: 3),
-          tabletScaffold: TabletScaffold(pageIndex: 3),
-          desktopScaffold: DesktopScaffold(pageIndex: 3),
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const Material(
+          child: ResponsiveLayout(
+            mobileScaffold: MobileScaffold(pageIndex: 3),
+            tabletScaffold: TabletScaffold(pageIndex: 3),
+            desktopScaffold: DesktopScaffold(pageIndex: 3),
+          ),
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
       ),
     ),
     GoRoute(
       path: '/alumni',
-      builder: (context, state) => const Material(
-        child: ResponsiveLayout(
-          mobileScaffold: MobileScaffold(pageIndex: 4),
-          tabletScaffold: TabletScaffold(pageIndex: 4),
-          desktopScaffold: DesktopScaffold(pageIndex: 4),
+      pageBuilder: (context, state) => CustomTransitionPage<void>(
+        key: state.pageKey,
+        child: const Material(
+          child: ResponsiveLayout(
+            mobileScaffold: MobileScaffold(pageIndex: 4),
+            tabletScaffold: TabletScaffold(pageIndex: 4),
+            desktopScaffold: DesktopScaffold(pageIndex: 4),
+          ),
         ),
+        transitionsBuilder: (context, animation, secondaryAnimation, child) =>
+            FadeTransition(opacity: animation, child: child),
       ),
     ),
   ],
