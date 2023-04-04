@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:ncc_website/components/common.dart';
 import 'package:ncc_website/constants.dart';
-import 'package:ncc_website/resources.dart/carousel.dart';
-import 'package:ncc_website/resources.dart/events/events.dart';
+import 'package:ncc_website/resources/carousel.dart';
+import 'package:ncc_website/resources/events.dart';
 import 'footer.dart';
 
 class GalleryPage extends StatefulWidget {
@@ -202,6 +202,7 @@ class GalCardTop extends StatelessWidget {
     Size size = MediaQuery.of(context).size;
     return Row(
       mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const Icon(
           Icons.not_started,
@@ -222,9 +223,10 @@ class GalCardTop extends StatelessWidget {
             ),
           ),
         ),
+        const Spacer(),
         const SizedBox(width: 20),
         size.width < 600 ? const SizedBox(width: 0) : GalDate(date: date),
-        const Spacer(),
+        const SizedBox(width: 20),
         size.width < 600
             ? const SizedBox(width: 0)
             : FilledButton.icon(
@@ -254,30 +256,30 @@ class GalDate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Tooltip(
       message: date,
-      child: Transform(
-        transform: Matrix4.identity()..scale(0.85),
-        child: Chip(
-          backgroundColor: Colors.teal[400],
-          shadowColor: Colors.black,
-          side: const BorderSide(color: Colors.teal, width: 1),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-          avatar: Container(
-            padding: const EdgeInsets.all(2),
-            child: const FittedBox(
-              child: Icon(
-                Icons.calendar_month,
-                color: Colors.white,
-              ),
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+        decoration: BoxDecoration(
+          color: Colors.teal[400],
+          borderRadius: BorderRadius.circular(50),
+          border: Border.all(color: Colors.teal, width: 2),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Icon(
+              Icons.calendar_today,
+              size: 11,
+              color: Colors.white,
             ),
-          ),
-          label: SelectableText(
-            date,
-            style: Theme.of(context)
-                .textTheme
-                .titleSmall!
-                .copyWith(fontWeight: FontWeight.bold, color: Colors.white),
-          ),
+            const SizedBox(width: 10),
+            SelectableText(
+              date,
+              style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  fontSize: 11,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+          ],
         ),
       ),
     );

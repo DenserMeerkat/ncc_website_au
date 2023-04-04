@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/about_page.dart';
+import 'package:ncc_website/components/alumni_page.dart';
 import 'package:ncc_website/components/gallery_page.dart';
 import 'package:ncc_website/components/home_page.dart';
 import 'package:ncc_website/components/mydrawer.dart';
 import 'package:ncc_website/components/web_menu.dart';
 import 'package:ncc_website/constants.dart';
 import 'package:ncc_website/components/events_page.dart';
-import 'package:ncc_website/responsive/desktop/home_desktop.dart';
 
 class TabletScaffold extends StatefulWidget {
   final int pageIndex;
@@ -35,7 +35,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
     const AboutPage(),
     const EventPage(),
     const GalleryPage(),
-    Container(color: Colors.yellow),
+    const AlumniPage(),
     //AboutPage(),
   ];
   @override

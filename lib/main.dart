@@ -25,48 +25,46 @@ final GoRouter _router = GoRouter(
           ),
         );
       },
-      routes: <RouteBase>[
-        GoRoute(
-          path: 'about',
-          builder: (context, state) => const Material(
-            child: ResponsiveLayout(
-              mobileScaffold: MobileScaffold(pageIndex: 1),
-              tabletScaffold: TabletScaffold(pageIndex: 1),
-              desktopScaffold: DesktopScaffold(pageIndex: 1),
-            ),
-          ),
+    ),
+    GoRoute(
+      path: '/about',
+      builder: (context, state) => const Material(
+        child: ResponsiveLayout(
+          mobileScaffold: MobileScaffold(pageIndex: 1),
+          tabletScaffold: TabletScaffold(pageIndex: 1),
+          desktopScaffold: DesktopScaffold(pageIndex: 1),
         ),
-        GoRoute(
-          path: 'events',
-          builder: (context, state) => const Material(
-            child: ResponsiveLayout(
-              mobileScaffold: MobileScaffold(pageIndex: 2),
-              tabletScaffold: TabletScaffold(pageIndex: 2),
-              desktopScaffold: DesktopScaffold(pageIndex: 2),
-            ),
-          ),
+      ),
+    ),
+    GoRoute(
+      path: '/events',
+      builder: (context, state) => const Material(
+        child: ResponsiveLayout(
+          mobileScaffold: MobileScaffold(pageIndex: 2),
+          tabletScaffold: TabletScaffold(pageIndex: 2),
+          desktopScaffold: DesktopScaffold(pageIndex: 2),
         ),
-        GoRoute(
-          path: 'gallery',
-          builder: (context, state) => const Material(
-            child: ResponsiveLayout(
-              mobileScaffold: MobileScaffold(pageIndex: 3),
-              tabletScaffold: TabletScaffold(pageIndex: 3),
-              desktopScaffold: DesktopScaffold(pageIndex: 3),
-            ),
-          ),
+      ),
+    ),
+    GoRoute(
+      path: '/gallery',
+      builder: (context, state) => const Material(
+        child: ResponsiveLayout(
+          mobileScaffold: MobileScaffold(pageIndex: 3),
+          tabletScaffold: TabletScaffold(pageIndex: 3),
+          desktopScaffold: DesktopScaffold(pageIndex: 3),
         ),
-        GoRoute(
-          path: 'alumni',
-          builder: (context, state) => const Material(
-            child: ResponsiveLayout(
-              mobileScaffold: MobileScaffold(pageIndex: 4),
-              tabletScaffold: TabletScaffold(pageIndex: 4),
-              desktopScaffold: DesktopScaffold(pageIndex: 4),
-            ),
-          ),
+      ),
+    ),
+    GoRoute(
+      path: '/alumni',
+      builder: (context, state) => const Material(
+        child: ResponsiveLayout(
+          mobileScaffold: MobileScaffold(pageIndex: 4),
+          tabletScaffold: TabletScaffold(pageIndex: 4),
+          desktopScaffold: DesktopScaffold(pageIndex: 4),
         ),
-      ],
+      ),
     ),
   ],
 );

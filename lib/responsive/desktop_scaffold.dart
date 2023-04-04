@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/about_page.dart';
+import 'package:ncc_website/components/alumni_page.dart';
 import 'package:ncc_website/components/gallery_page.dart';
 import 'package:ncc_website/components/home_page.dart';
 import 'package:ncc_website/components/web_menu.dart';
@@ -36,7 +37,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
     const AboutPage(),
     const EventPage(),
     const GalleryPage(),
-    Container(color: Colors.yellow),
+    const AlumniPage(),
     //AboutPage(),
   ];
 

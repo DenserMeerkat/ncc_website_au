@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:ncc_website/responsive/responsive_layout.dart';
 
 import '../constants.dart';
-import '../resources.dart/carousel.dart';
+import '../resources/carousel.dart';
 
 class EventCard extends StatelessWidget {
   final String title;
@@ -34,7 +34,7 @@ class EventCard extends StatelessWidget {
         vertical: 8.0,
         horizontal: 16,
       ),
-      margin: EdgeInsets.symmetric(horizontal: isMobile ? 15 : 0),
+      margin: EdgeInsets.symmetric(horizontal: isMobile ? 4 : 0),
       width: 500,
       decoration:
           boxDecoration.copyWith(borderRadius: BorderRadius.circular(20)),
@@ -65,66 +65,72 @@ class EventCard extends StatelessWidget {
                 children: [
                   Tooltip(
                     message: date,
-                    child: Transform(
-                      transform: Matrix4.identity()..scale(0.85),
-                      child: Chip(
-                        backgroundColor: Colors.teal[400],
-                        shadowColor: Colors.black,
-                        side: const BorderSide(color: Colors.teal, width: 2),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        avatar: Container(
-                          padding: const EdgeInsets.all(2),
-                          child: const FittedBox(
-                            child: Icon(
-                              Icons.calendar_month,
-                              color: Colors.white,
-                            ),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.teal[400],
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Colors.teal, width: 2),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.calendar_today,
+                            size: 11,
+                            color: Colors.white,
                           ),
-                        ),
-                        label: SelectableText(
-                          date,
-                          style:
-                              Theme.of(context).textTheme.titleSmall!.copyWith(
-                                    fontSize: 12,
+                          const SizedBox(width: 10),
+                          SelectableText(
+                            date,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 11,
                                     fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                        ),
+                                    color: Colors.white),
+                          ),
+                        ],
                       ),
                     ),
                   ),
+                  SizedBox(
+                    width: size.width * 0.01,
+                  ),
                   Tooltip(
                     message: location,
-                    child: Transform(
-                      transform: Matrix4.identity()..scale(0.85),
-                      child: Chip(
-                        backgroundColor: Colors.lightGreen[400],
-                        shadowColor: Colors.black,
-                        side: const BorderSide(
-                            color: Colors.lightGreen, width: 2),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)),
-                        avatar: Container(
-                          padding: const EdgeInsets.all(2),
-                          child: const FittedBox(
-                            child: Icon(
-                              Icons.location_on_outlined,
-                              color: Colors.white,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 4, horizontal: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.lightGreen[400],
+                        borderRadius: BorderRadius.circular(50),
+                        border: Border.all(color: Colors.lightGreen, width: 2),
+                      ),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const Icon(
+                            Icons.location_on_outlined,
+                            size: 11,
+                            color: Colors.white,
+                          ),
+                          const SizedBox(width: 10),
+                          SelectableText(
+                            location.truncate(
+                              size.width < 400 ? 300 ~/ 15 : 500 ~/ 12,
                             ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleSmall!
+                                .copyWith(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.white),
                           ),
-                        ),
-                        label: SelectableText(
-                          location.truncate(
-                            isMobile ? 300 ~/ 12 : 500 ~/ 18,
-                          ),
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleSmall!
-                              .copyWith(
-                                  fontWeight: FontWeight.bold,
-                                  color: Colors.white),
-                        ),
+                        ],
                       ),
                     ),
                   ),
@@ -136,13 +142,11 @@ class EventCard extends StatelessWidget {
             height: 10,
           ),
           Container(
-            //width: double.infinity,
             height: 250,
             clipBehavior: Clip.antiAlias,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),
-            //constraints: const BoxConstraints(minHeight: 10, maxHeight: 400),
             child: CarouselSlider(
               items: imgList,
               options: CarouselOptions(
@@ -188,14 +192,6 @@ class EventCard extends StatelessWidget {
                 ),
               ),
               const SizedBox(width: 10),
-              FilledButton.icon(
-                onPressed: () {},
-                label: const Text("Report"),
-                icon: const Icon(
-                  Icons.download,
-                  size: 15,
-                ),
-              ),
             ],
           ),
           const SizedBox(

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'dart:html' as html;
 import 'package:ncc_website/icons.dart';
@@ -21,45 +23,47 @@ class Footer extends StatelessWidget {
         Container(
           margin: EdgeInsets.only(top: isDesktop ? 0 : 20),
           decoration: BoxDecoration(
-            color: isDesktop ? Colors.transparent : Colors.grey,
+            color:
+                isDesktop ? Colors.transparent : Colors.grey.withOpacity(0.2),
             // borderRadius: size.width > 1100
             //     ? BorderRadius.circular(10)
             //     : BorderRadius.circular(0),
           ),
           constraints: const BoxConstraints(minHeight: 10, maxHeight: 500),
           width: double.infinity,
-          child: const Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0, horizontal: 48),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 48),
             child: Wrap(
               alignment: WrapAlignment.center,
               spacing: 25,
               runSpacing: 10,
-              children: [
+              children: const [
                 SocialBox(
                   appName: 'Facebook',
                   hoverColor: Color.fromRGBO(59, 89, 152, 1),
                   icon: MyFlutterApp.facebook,
-                  link: "https://www.facebook.com/",
+                  link: "https://www.facebook.com/nccarmy.annauniv",
                 ),
                 SocialBox(
                   appName: 'Instagram',
                   hoverColor: Color.fromRGBO(238, 29, 82, 1),
                   icon: MyFlutterApp.instagram,
                   size: 12,
-                  link: "https://www.instagram.com/",
+                  link: "https://www.instagram.com/nccarmyannauniv/",
                 ),
                 SocialBox(
                   appName: 'LinkedIn',
                   hoverColor: Color.fromRGBO(10, 102, 194, 1),
                   icon: MyFlutterApp.linkedin,
-                  link: "https://www.linkedin.com/",
+                  link:
+                      "https://www.linkedin.com/company/ncc-army-anna-university",
                 ),
                 SocialBox(
                   appName: 'Youtube',
                   hoverColor: Color.fromRGBO(240, 38, 38, 1),
                   icon: MyFlutterApp.youtube,
                   size: 13,
-                  link: "https://www.youtube.com/",
+                  link: "https://www.youtube.com/@nccarmyannauniv.5771",
                 ),
               ],
             ),
@@ -118,7 +122,7 @@ class _SocialBoxState extends State<SocialBox> {
           padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 12),
           decoration: BoxDecoration(
             color: isHover ? widget.hoverColor : Colors.grey[50],
-            borderRadius: BorderRadius.circular(50),
+            borderRadius: BorderRadius.circular(width < 600 ? 50 : 6),
             boxShadow: isHover
                 ? [
                     const BoxShadow(

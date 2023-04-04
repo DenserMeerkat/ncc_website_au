@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ncc_website/components/common.dart';
-import 'package:ncc_website/resources.dart/carousel.dart';
-import 'package:ncc_website/resources.dart/events/events.dart';
+import 'package:ncc_website/resources/carousel.dart';
+import 'package:ncc_website/resources/events.dart';
 import 'footer.dart';
 
 class EventPage extends StatefulWidget {

@@ -56,10 +56,10 @@ class MyDrawer extends StatelessWidget {
                                 const SizedBox(
                                   width: 10,
                                 ),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: const [
                                     FittedBox(
                                       child: SelectableText(
                                         "National Cadet Corps",
@@ -71,7 +71,7 @@ class MyDrawer extends StatelessWidget {
                                       ),
                                     ),
                                     SizedBox(
-                                      height: 5,
+                                      height: 2,
                                     ),
                                     SelectableText(
                                       "Anna University",

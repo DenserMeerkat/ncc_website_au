@@ -42,6 +42,8 @@ class WebMenu extends StatelessWidget {
                   return context.go('/gallery');
                 case 4:
                   return context.go('/alumni');
+                default:
+                  return context.go('/');
               }
             },
           ),
